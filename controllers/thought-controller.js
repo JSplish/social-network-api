@@ -25,7 +25,7 @@ const thoughtController ={
         .catch(err => res.status(500)).json(err)
     },
 
-    getThoughtById(req,res){
+    removeThought(req,res){
         Thought.findOneAndRemove({_id:req.params.id})
         .then(data => res.json(data))
         .catch(err => res.status(500)).json(err)
@@ -37,7 +37,7 @@ const thoughtController ={
         .catch(err => res.status(500)).json(err)
     },
 
-    addReaction(req,res){
+    removeReaction(req,res){
         Thought.findOneAndUpdate({_id:req.params.id},{ $pull:{ reactions:{ reactionId: req.params.id}} },{new:true})
         .then(data => res.json(data))
         .catch(err => res.status(500)).json(err)
