@@ -9,7 +9,7 @@ const {
     deleteUser,
     removeFriend
 } = require('../../controllers/user-controller');
-const { put } = require('./thought-routes');
+
 
 router
     .route('/')
