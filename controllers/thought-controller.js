@@ -45,6 +45,6 @@ const thoughtController ={
 }
 
 module.exports = thoughtController
-// { getAllThoughts, getThoughtById, addThought, updateThought, removeThought,addReaction, removeReaction}
+
 
 
