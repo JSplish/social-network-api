@@ -26,14 +26,15 @@ const userController = {
     },
 
     addFriend(req,res){
-        console.log("Add friend",req.body)
-        User.findOneAndUpdate({_id:req.params.userId},{ $push:{ friends:req.params.friendId} },{new:true})
+        User.findOneAndUpdate(
+            {_id: req.params.userId},
+            { $push:{ friends: req.params.friendId} },
+            {new:true, runValidators: true })
         .then(data => res.json(data))
         .catch(err => res.status(500).json(err))
     },
 
     deleteUser(req,res){
-        console.log("delete user")
         User.findOneAndDelete({_id:req.params.id})
         .then(result => res.json(result))
         .catch(err => res.status(500).json(err))

@@ -32,13 +32,13 @@ const thoughtController ={
     },
 
     addReaction(req,res){
-        Thought.findOneAndUpdate({_id:req.params.id},{ $push:{ reactions:req.body} },{new:true})
+        Thought.findOneAndUpdate({_id:req.params.thoughtId},{ $push:{ reactions:req.body} },{new:true})
         .then(data => res.json(data))
         .catch(err => res.status(500).json(err))
     },
 
     removeReaction(req,res){
-        Thought.findOneAndUpdate({_id:req.params.id},{ $pull:{ reactions:{ reactionId: req.params.id}} },{new:true})
+        Thought.findOneAndUpdate({_id:req.params.thoughtId},{ $pull:{ reactions:{ _id: req.params.reactionId}} },{new:true})
         .then(data => res.json(data))
         .catch(err => res.status(500).json(err))
     },
